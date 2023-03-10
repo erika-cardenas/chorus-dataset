@@ -1,7 +1,7 @@
 # chorus-dataset
 Welcome to the first demo using the Chorus dataset. (:
 
-The three main files you want to focus on are `docker-compose.yaml`, `schema.py`, `upload_data.py`, and `query.py`. Here is a step-by-step on how to run this demo on your local computer:
+The four main files you want to focus on are `docker-compose.yaml`, `schema.py`, `upload_data.py`, and `query.py`. Here is a step-by-step on how to run this demo on your local computer:
 
 ## Preliminary step:
 Make sure you have the Weaviate Python client installed. [Here](https://weaviate.io/developers/weaviate/client-libraries/python) is the documentation on how to do so, but here is the code:
