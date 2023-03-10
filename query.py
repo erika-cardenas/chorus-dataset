@@ -8,8 +8,29 @@ query_one = """
 {
   Get {
     Products (
+      where: {
+        operator: IsNull, path: "price", valueBoolean: true}
+    ) {
+      price
+      short_description
+      title
+    }
+  }
+}
+"""
+
+result = client.query.raw(query_one)
+print(result)
+
+
+# QUERY EXAMPLE TWO 
+
+query_two = """
+{
+  Get {
+    Products (
       nearText: {
-        concepts: "ethernet cord", distance: 0.7
+        concepts: "ethernet cord"
       }) {
       short_description
       title
@@ -21,13 +42,13 @@ query_one = """
 }
 """
 
-result = client.query.raw(query_one)
+result = client.query.raw(query_two)
 print(result)
 
 
-# QUERY EXAMPLE TWO
+# QUERY EXAMPLE THREE
 
-query_two = """
+query_three = """
 {
   Get {
     Products(
@@ -52,13 +73,13 @@ query_two = """
 }
 """
 
-result = client.query.raw(query_two)
+result = client.query.raw(query_three)
 print(result)
 
 
-# QUERY EXAMPLE THREE
+# QUERY EXAMPLE FOUR
 
-query_three = """
+query_four = """
 {
   Get {
     Products(
@@ -76,6 +97,6 @@ query_three = """
 }
 """
 
-result = client.query.raw(query_three)
+result = client.query.raw(query_four)
 print(result)
 
