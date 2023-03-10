@@ -57,8 +57,8 @@ As mentioned earlier, there were quite a few `null` values for `price` and `shor
 This query is running pure vector search (`nearText`). It is finding concepts related to "ethernet cord". We can also see the certainty under additional.
 
 #### Query 3:
-This query is using *hybrid* search. `alpha` is a parameter used to give a weight to bm25 and vector search. With `alpha` set to 0.75, it is applying more weight to the dense vectors. 
+This query is using **hybrid** search. `alpha` is a parameter used to give a weight to bm25 and vector search. With `alpha` set to 0.75, it is applying more weight to the dense vectors. 
 I also added in a where filter to find pc laptops that are in between the 100 and 2000 price range. 
 
 #### Query 4:
-This query is using *bm25*. I want to find hp laptops and boost the `title` property -- hence the `"title^2"`. 
+This query is using **bm25**. I want to find hp laptops and boost the `title` property -- hence the `"title^2"`. 
