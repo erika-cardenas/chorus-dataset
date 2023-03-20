@@ -22,7 +22,7 @@ docker-compose up
 ## Step 2: 
 In Weaviate, you create schemas to capture each of the entities you will be searching.  Our demo has 10 properties (`title`, `short_description`, `price`, `img_high`, `name`, `ean`, `date_released`, `supplier` , `brand` , `product_type` ) 
 that belong to the `Products` class.
-Since we have a `null` values, we want to be able to filter for objects that have empty properties. 
+Since we have `null` values, we want to be able to filter for objects that have empty properties. 
 
 Run this to define the schema;
 
