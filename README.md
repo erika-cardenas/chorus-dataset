@@ -10,7 +10,7 @@ $ pip install weaviate-client
 ```
 
 ## Step 1: 
-To run Weaviate locally, we need to run our yaml file. For simplicity, we are using the [`text2vec-transformers`](https://weaviate.io/developers/weaviate/modules/retriever-vectorizer-modules/text2vec-transformers).
+To run Weaviate locally, we need to run our yaml file. For simplicity, we are using the [`multi2vec-clip`](https://weaviate.io/developers/weaviate/modules/retriever-vectorizer-modules/multi2vec-clip).
 We can eventually switch this to use any vectorizer like OpenAI, Cohere etc. 
 
 Run this command to get docker running;
@@ -20,8 +20,9 @@ docker-compose up
 ```
 
 ## Step 2: 
-In Weaviate, you create schemas to capture each of the entities you will be searching. Our demo has three properties (`title`, `short_description`, `price`) 
-that belong to the `Poducts` class. Since we have `null` values, we want to be able to filter for objects that have empty properties. 
+In Weaviate, you create schemas to capture each of the entities you will be searching.  Our demo has 10 properties (`title`, `short_description`, `price`, `img_high`, `name`, `ean`, `date_released`, `supplier` , `brand` , `product_type` ) 
+that belong to the `Products` class.
+Since we have `null` values, we want to be able to filter for objects that have empty properties. 
 
 Run this to define the schema;
 
@@ -62,3 +63,12 @@ I also added in a where filter to find pc laptops that are in between the 100 an
 
 #### Query 4:
 This query is using **bm25**. I want to find hp laptops and boost the `title` property -- hence the `"title^2"`. 
+
+#### Query 5:
+This query is using **image vector search**. For images queries you may have to use image2base64.py to get base64 value for image uri or real image as GraphQL doesn't support png->base64 encoding, so please use a base64 encoded image in your query.
+The example uses projector image and gets other projector in search results. 
+
+#### Query 6:
+This query is using **hybrid** search. I want to find laptops from HP.
+`alpha` is a parameter used to give a weight to bm25 and vector search. With `alpha` set to 0.75, it is applying more weight to the dense vectors. 
+Also added a brand and price filter to find laptops from HP , that are in between the 100 and 2000 price range. 
